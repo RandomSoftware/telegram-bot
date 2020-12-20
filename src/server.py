@@ -1,12 +1,10 @@
-from flask import Flask
-from flask import Response
-app = Flask(__name__)
+import requests
+import configuration
 
+config = configuration.load_config()
 
-@app.route("/health")
-def health():
-    return Response("{'status': 'ok'}", mimetype='application/json')
-
+base_url = 'https://api.telegram.org/bot' + config.token
 
 if __name__ == "__main__":
-    app.run()
+    response = requests.get(base_url + '/getMe')
+    print(response.content)

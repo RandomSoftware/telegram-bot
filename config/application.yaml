@@ -1,0 +1,4 @@
+bot:
+  allowed_clients:
+    - ollven
+    - msventukh
